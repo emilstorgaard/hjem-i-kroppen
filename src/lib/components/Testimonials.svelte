@@ -36,7 +36,8 @@
 		const clamped = ((index % count) + count) % count;
 		activeIndex = clamped;
 		const card = trackEl.children[clamped] as HTMLElement | undefined;
-		card?.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+		// Scroll the track directly (not scrollIntoView) so the page itself never scrolls vertically.
+		if (card) trackEl.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
 	}
 
 	function next() {
