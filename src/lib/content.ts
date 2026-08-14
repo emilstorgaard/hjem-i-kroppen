@@ -47,20 +47,23 @@ export const priceItems: PriceItem[] = [
 		title: 'Klippekort',
 		price: '2.900',
 		unit: 'kr. / 5 gange',
-		description: 'Fem sessioner samlet i et klippekort – en god måde at komme godt i gang med et forløb.',
+		description:
+			'Fem sessioner samlet i et klippekort – en god måde at komme godt i gang med et forløb.',
 		featured: true
 	},
 	{
 		title: 'Kvinderum',
 		price: '250',
 		unit: 'kr. / gang',
-		description: 'Deltagelse i det faste kvinderumsfællesskab. Spørg gerne ind til de kommende datoer.'
+		description:
+			'Deltagelse i det faste kvinderumsfællesskab. Spørg gerne ind til de kommende datoer.'
 	},
 	{
 		title: 'Retreat',
 		price: 'Fra 1.800',
 		unit: 'kr.',
-		description: 'Prisen afhænger af retreatets længde og indhold. Kontakt mig for det aktuelle program.'
+		description:
+			'Prisen afhænger af retreatets længde og indhold. Kontakt mig for det aktuelle program.'
 	}
 ];
 
@@ -88,6 +91,12 @@ export const testimonials: Testimonial[] = [
 		quote:
 			'Retreatet var en gave til mig selv. Jeg kom hjem med en helt anden ro og forbindelse til min krop.',
 		name: 'Sofie, 51 år',
+		rating: 5
+	},
+	{
+		quote:
+			'Jeg var meget nervøs for at deltage, men blev mødt med så meget varme og tryghed. Kan varmt anbefales.',
+		name: 'Louise, 38 år',
 		rating: 5
 	}
 ];

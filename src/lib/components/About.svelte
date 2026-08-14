@@ -1,12 +1,18 @@
-<section id="om-mig" class="bg-sand-50 px-6 py-24 lg:px-8">
+<section id="om-mig" aria-labelledby="om-mig-heading" class="bg-sand-50 px-6 py-24 lg:px-8">
 	<div class="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2">
 		<div class="relative mx-auto w-full max-w-md">
 			<div
 				class="absolute -top-8 -left-8 h-64 w-64 rounded-full bg-sand-200/70 blur-2xl"
 				aria-hidden="true"
 			></div>
-			<div class="relative aspect-square overflow-hidden rounded-[3rem] bg-sand-100 shadow-xl ring-1 ring-sand-200">
-				<img src="/logo.jpg" alt="Mette, grundlægger af Hjem i Kroppen" class="h-full w-full object-cover" />
+			<div
+				class="relative aspect-square overflow-hidden rounded-[3rem] bg-sand-100 shadow-xl ring-1 ring-sand-200"
+			>
+				<img
+					src="/logo.jpg"
+					alt="Mette, grundlægger af Hjem i Kroppen"
+					class="h-full w-full object-cover"
+				/>
 			</div>
 			<div
 				class="absolute -right-6 -bottom-6 h-32 w-32 rounded-full bg-sand-400/40 blur-2xl"
@@ -16,14 +22,17 @@
 
 		<div>
 			<p class="text-sm font-medium tracking-[0.3em] text-sand-600 uppercase">Om mig</p>
-			<h2 class="mt-4 font-serif text-4xl font-semibold text-sand-900 sm:text-5xl">
+			<h2
+				class="mt-4 font-serif text-4xl font-semibold text-sand-900 sm:text-5xl"
+				id="om-mig-heading"
+			>
 				Mette &mdash; danse- og bevægelsesterapeut
 			</h2>
 			<p class="mt-6 text-lg leading-relaxed text-sand-700">
 				Jeg er selvstændig og uddannet i Danse- og Bevægelsesterapi, og jeg brænder for at hjælpe
 				mennesker med at finde tilbage til deres krop gennem dans, bevægelse og nærvær. Hos mig
-				møder du et trygt rum, hvor der er plads til det, der er &mdash; uden krav om at kunne
-				danse eller se ud på en bestemt måde.
+				møder du et trygt rum, hvor der er plads til det, der er &mdash; uden krav om at kunne danse
+				eller se ud på en bestemt måde.
 			</p>
 			<p class="mt-4 text-lg leading-relaxed text-sand-700">
 				Gennem årene har jeg arbejdet med enkeltpersoner, kvindegrupper og retreats, hvor kroppens
