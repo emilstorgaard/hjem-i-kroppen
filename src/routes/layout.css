@@ -1,0 +1,23 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+@theme {
+	--font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+	--font-serif: 'Cormorant Garamond', ui-serif, Georgia, serif;
+
+	--color-sand-50: #fbf8f2;
+	--color-sand-100: #f4eee1;
+	--color-sand-200: #e9dfc7;
+	--color-sand-300: #dbc9a3;
+	--color-sand-400: #c7ab7c;
+	--color-sand-500: #b3925d;
+	--color-sand-600: #967a49;
+	--color-sand-700: #78613b;
+	--color-sand-800: #584732;
+	--color-sand-900: #362c22;
+}
+
+html {
+	scroll-behavior: smooth;
+}
