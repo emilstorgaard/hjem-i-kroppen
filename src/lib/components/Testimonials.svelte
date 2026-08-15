@@ -1,25 +1,24 @@
 <script lang="ts">
 	import { testimonials } from '$lib/content';
 
-	// Only worth carousel-ing when there are more than fit in one row (3).
-	const isCarousel = testimonials.length > 3;
+	const N = testimonials.length;
+	const isCarousel = N > 3;
 	const autoplayDelay = 6000;
 
-	let trackEl: HTMLDivElement | undefined = $state();
 	let activeIndex = $state(0);
+	let regionEl: HTMLDivElement | undefined = $state();
 	let isPaused = $state(false);
-	// How many cards fit in the visible track at once (matches the sm/lg width breakpoints below).
-	let visibleCount = $state(1);
+	let isInView = $state(false);
+	let autoplayTimeout: ReturnType<typeof setTimeout> | undefined;
 
-	// The last index that can actually scroll further right - clicking past it just loops back to 0.
-	const maxIndex = $derived(Math.max(0, testimonials.length - visibleCount));
+	let cardsPerView = $state(1);
 
 	$effect(() => {
-		if (typeof window === 'undefined') return;
+		if (!isCarousel || typeof window === 'undefined') return;
 		const mqSm = window.matchMedia('(min-width: 640px)');
 		const mqLg = window.matchMedia('(min-width: 1024px)');
 		const update = () => {
-			visibleCount = mqLg.matches ? 3 : mqSm.matches ? 2 : 1;
+			cardsPerView = mqLg.matches ? 3 : mqSm.matches ? 2 : 1;
 		};
 		update();
 		mqSm.addEventListener('change', update);
@@ -30,22 +29,24 @@
 		};
 	});
 
-	function scrollToIndex(index: number) {
-		if (!trackEl) return;
+	const maxIndex = $derived(Math.max(0, N - cardsPerView));
+
+	$effect(() => {
+		if (activeIndex > maxIndex) activeIndex = maxIndex;
+	});
+
+	function goTo(index: number) {
 		const count = maxIndex + 1;
-		const clamped = ((index % count) + count) % count;
-		activeIndex = clamped;
-		const card = trackEl.children[clamped] as HTMLElement | undefined;
-		// Scroll the track directly (not scrollIntoView) so the page itself never scrolls vertically.
-		if (card) trackEl.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
+		activeIndex = ((index % count) + count) % count;
+		resetAutoplayTimer();
 	}
 
 	function next() {
-		scrollToIndex(activeIndex + 1);
+		goTo(activeIndex + 1);
 	}
 
 	function prev() {
-		scrollToIndex(activeIndex - 1);
+		goTo(activeIndex - 1);
 	}
 
 	function handleKeydown(event: KeyboardEvent) {
@@ -58,30 +59,31 @@
 		}
 	}
 
-	// Keep the active dot in sync when the user drags/swipes the track manually.
-	function handleScroll() {
-		if (!trackEl) return;
-		const track = trackEl;
-		let closest = 0;
-		let closestDistance = Infinity;
-		[...track.children].forEach((child, i) => {
-			const distance = Math.abs((child as HTMLElement).offsetLeft - track.scrollLeft);
-			if (distance < closestDistance) {
-				closestDistance = distance;
-				closest = i;
+	function resetAutoplayTimer() {
+		clearTimeout(autoplayTimeout);
+		if (!isCarousel || typeof window === 'undefined') return;
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+		autoplayTimeout = setTimeout(() => {
+			if (!isPaused && isInView) {
+				next();
+			} else {
+				resetAutoplayTimer();
 			}
-		});
-		activeIndex = Math.min(closest, maxIndex);
+		}, autoplayDelay);
 	}
 
 	$effect(() => {
-		if (!isCarousel || typeof window === 'undefined') return;
-		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+		if (!regionEl || typeof window === 'undefined') return;
+		const observer = new IntersectionObserver(([entry]) => (isInView = entry.isIntersecting), {
+			threshold: 0.4
+		});
+		observer.observe(regionEl);
+		return () => observer.disconnect();
+	});
 
-		const interval = setInterval(() => {
-			if (!isPaused) next();
-		}, autoplayDelay);
-		return () => clearInterval(interval);
+	$effect(() => {
+		resetAutoplayTimer();
+		return () => clearTimeout(autoplayTimeout);
 	});
 </script>
 
@@ -106,7 +108,7 @@
 {/snippet}
 
 {#snippet testimonialCard(testimonial: (typeof testimonials)[number])}
-	<figure class="flex flex-col rounded-3xl bg-sand-50 p-8 shadow-sm ring-1 ring-sand-200">
+	<figure class="flex h-full flex-col rounded-3xl bg-sand-50 p-8 shadow-sm ring-1 ring-sand-200">
 		{@render stars(testimonial.rating)}
 		<blockquote class="mt-5 flex-1 text-lg leading-relaxed text-sand-800 italic">
 			&laquo;{testimonial.quote}&raquo;
@@ -135,6 +137,7 @@
 
 		{#if isCarousel}
 			<div
+				bind:this={regionEl}
 				class="mt-16"
 				role="region"
 				aria-roledescription="karrusel"
@@ -147,24 +150,28 @@
 				<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 				<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 				<div
-					bind:this={trackEl}
-					onscroll={handleScroll}
 					onkeydown={handleKeydown}
 					tabindex="0"
 					role="group"
 					aria-label="Brug piletasterne for at bladre i anmeldelser"
-					class="no-scrollbar flex snap-x snap-mandatory gap-8 overflow-x-auto scroll-smooth px-1 pb-1 focus:outline-none"
+					class="overflow-hidden focus:outline-none"
 				>
-					{#each testimonials as testimonial, i (testimonial.name)}
-						<div
-							class="w-full shrink-0 snap-start sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)]"
-							role="group"
-							aria-roledescription="slide"
-							aria-label="{i + 1} af {testimonials.length}"
-						>
-							{@render testimonialCard(testimonial)}
-						</div>
-					{/each}
+					<div
+						class="flex transition-transform duration-500 ease-out"
+						style="transform: translateX(-{activeIndex * (100 / cardsPerView)}%)"
+					>
+						{#each testimonials as testimonial, i (testimonial.name)}
+							<div
+								class="shrink-0 px-3"
+								style="flex: 0 0 {100 / cardsPerView}%"
+								role="group"
+								aria-roledescription="slide"
+								aria-label="{i + 1} af {N}"
+							>
+								{@render testimonialCard(testimonial)}
+							</div>
+						{/each}
+					</div>
 				</div>
 
 				<div class="mt-8 flex items-center justify-center gap-6">
@@ -195,7 +202,7 @@
 						{#each { length: maxIndex + 1 } as _, i (i)}
 							<button
 								type="button"
-								onclick={() => scrollToIndex(i)}
+								onclick={() => goTo(i)}
 								aria-label="Gå til anmeldelse {i + 1}"
 								aria-current={i === activeIndex}
 								class={[
