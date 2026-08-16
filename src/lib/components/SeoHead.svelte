@@ -10,6 +10,7 @@
 		imageWidth?: number;
 		imageHeight?: number;
 		type?: string;
+		noindex?: boolean;
 	};
 
 	let {
@@ -20,7 +21,8 @@
 		imageAlt = 'Hjem i Kroppen – logo',
 		imageWidth = 1254,
 		imageHeight = 1254,
-		type = 'website'
+		type = 'website',
+		noindex = false
 	}: Props = $props();
 
 	const canonical = $derived(`${SITE_URL}${path}`);
@@ -31,6 +33,9 @@
 	<title>{title}</title>
 	<meta name="description" content={description} />
 	<link rel="canonical" href={canonical} />
+	{#if noindex}
+		<meta name="robots" content="noindex, nofollow" />
+	{/if}
 
 	<meta property="og:type" content={type} />
 	<meta property="og:url" content={canonical} />

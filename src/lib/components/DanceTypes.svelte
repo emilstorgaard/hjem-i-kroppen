@@ -88,7 +88,7 @@
 					<p class="mt-3 flex-1 leading-relaxed text-sand-700">{type.description}</p>
 					<a
 						href="#kontakt"
-						class="mt-6 inline-flex items-center gap-1 rounded-sm text-sm font-medium text-sand-700 hover:text-sand-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
+						class="mt-6 inline-flex items-center gap-1 rounded-sm text-sm font-medium text-sand-700 hover:text-sand-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
 					>
 						Læs mere / book
 						<svg

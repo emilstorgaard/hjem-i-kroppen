@@ -18,7 +18,7 @@
 	>
 		<a
 			href="#top"
-			class="flex items-center gap-3 rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
+			class="flex items-center gap-3 rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
 		>
 			<img src="/logo.jpg" alt="Hjem i Kroppen" class="h-10 w-10 rounded-full object-cover" />
 			<span class="font-serif text-lg font-semibold text-sand-50">{contactInfo.name}</span>
@@ -28,7 +28,7 @@
 			{#each links as link (link.href)}
 				<a
 					href={link.href}
-					class="rounded-sm text-sm text-sand-400 transition-colors hover:text-sand-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
+					class="rounded-sm text-sm text-sand-400 transition-colors hover:text-sand-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
 				>
 					{link.label}
 				</a>

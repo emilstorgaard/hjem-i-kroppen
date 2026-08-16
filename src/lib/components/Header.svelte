@@ -39,7 +39,7 @@
 	>
 		<a
 			href="#top"
-			class="flex items-center gap-3 rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
+			class="flex items-center gap-3 rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
 		>
 			<img
 				src="/logo.jpg"
@@ -55,14 +55,14 @@
 			{#each navLinks as link (link.href)}
 				<a
 					href={link.href}
-					class="rounded-sm text-sm font-medium tracking-wide text-sand-700 transition-colors hover:text-sand-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
+					class="rounded-sm text-sm font-medium tracking-wide text-sand-700 transition-colors hover:text-sand-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
 				>
 					{link.label}
 				</a>
 			{/each}
 			<a
 				href="#kontakt"
-				class="rounded-full bg-sand-800 px-5 py-2.5 text-sm font-medium text-sand-50 shadow-sm transition-colors hover:bg-sand-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
+				class="rounded-full bg-sand-800 px-5 py-2.5 text-sm font-medium text-sand-50 shadow-sm transition-colors hover:bg-sand-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
 			>
 				Book en tid
 			</a>
@@ -70,7 +70,7 @@
 
 		<button
 			type="button"
-			class="flex h-10 w-10 items-center justify-center rounded-full text-sand-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600 lg:hidden"
+			class="flex h-10 w-10 items-center justify-center rounded-full text-sand-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600 lg:hidden"
 			aria-label={mobileMenuOpen ? 'Luk menu' : 'Åbn menu'}
 			aria-expanded={mobileMenuOpen}
 			aria-controls="mobile-menu"
@@ -118,7 +118,7 @@
 				<a
 					href={link.href}
 					onclick={closeMenu}
-					class="rounded-lg px-3 py-2.5 text-base font-medium text-sand-800 transition-colors hover:bg-sand-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
+					class="rounded-lg px-3 py-2.5 text-base font-medium text-sand-800 transition-colors hover:bg-sand-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
 				>
 					{link.label}
 				</a>
@@ -126,7 +126,7 @@
 			<a
 				href="#kontakt"
 				onclick={closeMenu}
-				class="mt-2 rounded-full bg-sand-800 px-5 py-3 text-center text-base font-medium text-sand-50 transition-colors hover:bg-sand-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
+				class="mt-2 rounded-full bg-sand-800 px-5 py-3 text-center text-base font-medium text-sand-50 transition-colors hover:bg-sand-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
 			>
 				Book en tid
 			</a>

@@ -179,7 +179,7 @@
 						type="button"
 						onclick={prev}
 						aria-label="Forrige anmeldelse"
-						class="flex h-10 w-10 items-center justify-center rounded-full text-sand-600 ring-1 ring-sand-300 transition-colors hover:bg-sand-200/60 hover:text-sand-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
+						class="flex h-10 w-10 items-center justify-center rounded-full text-sand-600 ring-1 ring-sand-300 transition-colors hover:bg-sand-200/60 hover:text-sand-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -217,7 +217,7 @@
 						type="button"
 						onclick={next}
 						aria-label="Næste anmeldelse"
-						class="flex h-10 w-10 items-center justify-center rounded-full text-sand-600 ring-1 ring-sand-300 transition-colors hover:bg-sand-200/60 hover:text-sand-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
+						class="flex h-10 w-10 items-center justify-center rounded-full text-sand-600 ring-1 ring-sand-300 transition-colors hover:bg-sand-200/60 hover:text-sand-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"

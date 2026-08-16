@@ -21,7 +21,7 @@
 		<div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 			<a
 				href="tel:{contactInfo.phone.replace(/\s/g, '')}"
-				class="flex flex-col items-center gap-3 rounded-3xl bg-sand-800/60 p-8 text-center ring-1 ring-sand-700 transition-colors hover:bg-sand-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
+				class="flex flex-col items-center gap-3 rounded-3xl bg-sand-800/60 p-8 text-center ring-1 ring-sand-700 transition-colors hover:bg-sand-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@
 
 			<a
 				href="mailto:{contactInfo.email}"
-				class="flex flex-col items-center gap-3 rounded-3xl bg-sand-800/60 p-8 text-center ring-1 ring-sand-700 transition-colors hover:bg-sand-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
+				class="flex flex-col items-center gap-3 rounded-3xl bg-sand-800/60 p-8 text-center ring-1 ring-sand-700 transition-colors hover:bg-sand-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +95,7 @@
 				href={contactInfo.instagram}
 				target="_blank"
 				rel="noopener noreferrer"
-				class="rounded-full text-sand-300 transition-colors hover:text-sand-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
+				class="rounded-full text-sand-300 transition-colors hover:text-sand-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
 				aria-label="Følg på Instagram"
 			>
 				<svg
@@ -115,7 +115,7 @@
 				href={contactInfo.facebook}
 				target="_blank"
 				rel="noopener noreferrer"
-				class="rounded-full text-sand-300 transition-colors hover:text-sand-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
+				class="rounded-full text-sand-300 transition-colors hover:text-sand-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
 				aria-label="Følg på Facebook"
 			>
 				<svg

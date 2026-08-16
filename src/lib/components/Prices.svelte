@@ -44,7 +44,7 @@
 					<a
 						href="#kontakt"
 						class={[
-							'mt-6 rounded-full px-5 py-2.5 text-center text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
+							'mt-6 rounded-full px-5 py-2.5 text-center text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2',
 							item.featured
 								? 'bg-sand-50 text-sand-900 hover:bg-sand-200 focus-visible:outline-sand-200'
 								: 'bg-sand-800 text-sand-50 hover:bg-sand-900 focus-visible:outline-sand-600'
