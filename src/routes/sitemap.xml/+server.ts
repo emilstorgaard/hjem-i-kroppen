@@ -1,7 +1,8 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import { SITE_URL } from '$lib/site';
 
 const pages = [{ path: '/', priority: '1.0', changefreq: 'monthly' }];
+
+const SITE_URL = 'https://hjemikroppen.dk';
 
 export const GET: RequestHandler = () => {
 	const xml = `<?xml version="1.0" encoding="UTF-8"?>
