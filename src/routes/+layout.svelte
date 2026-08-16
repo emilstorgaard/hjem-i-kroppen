@@ -3,17 +3,16 @@
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import { contactInfo } from '$lib/content';
+	import { SITE_URL } from '$lib/site';
 
 	let { children } = $props();
-
-	const siteUrl = 'https://hjemikroppen.dk';
 
 	const structuredData = {
 		'@context': 'https://schema.org',
 		'@type': ['LocalBusiness', 'HealthAndBeautyBusiness'],
 		name: contactInfo.name,
-		url: `${siteUrl}/`,
-		image: `${siteUrl}/logo.jpg`,
+		url: `${SITE_URL}/`,
+		image: `${SITE_URL}/logo.jpg`,
 		telephone: contactInfo.phone,
 		email: contactInfo.email,
 		address: {
@@ -27,7 +26,7 @@
 </script>
 
 <svelte:head>
-	<title>Hjem i Kroppen – Danse- og Bevægelsesterapi</title>
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html `<script type="application/ld+json">${structuredDataJson}</scr` + `ipt>`}
 </svelte:head>
 
