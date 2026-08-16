@@ -3,7 +3,6 @@
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import { contactInfo } from '$lib/content';
-	import { SITE_URL } from '$lib/site';
 
 	let { children } = $props();
 
@@ -11,8 +10,8 @@
 		'@context': 'https://schema.org',
 		'@type': ['LocalBusiness', 'HealthAndBeautyBusiness'],
 		name: contactInfo.name,
-		url: `${SITE_URL}/`,
-		image: `${SITE_URL}/logo.jpg`,
+		url: "https://hjemikroppen.dk/",
+		image: "https://hjemikroppen.dk/logo.jpg",
 		telephone: contactInfo.phone,
 		email: contactInfo.email,
 		address: {

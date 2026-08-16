@@ -12,7 +12,7 @@
 	);
 </script>
 
-<SeoHead title={`${heading} – Hjem i Kroppen`} description={message} noindex={true} />
+<SeoHead metaTitle={`${heading} – Hjem i Kroppen`} metaDescription={message} noindex={true} />
 
 <section
 	class="relative flex min-h-svh flex-col items-center justify-center overflow-hidden bg-sand-100 px-6 py-24 text-center lg:px-8"
