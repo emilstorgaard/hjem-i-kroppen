@@ -1,3 +1,11 @@
+<script lang="ts">
+	type Props = {
+		heroTitle: string;
+	};
+
+	let { heroTitle }: Props = $props();
+</script>
+
 <section
 	id="top"
 	class="relative flex min-h-svh flex-col overflow-hidden bg-sand-100"
@@ -34,7 +42,7 @@
 		<h1
 			class="mt-3 font-serif text-3xl leading-tight font-semibold text-sand-900 sm:mt-5 sm:text-4xl md:text-5xl lg:text-6xl [@media(min-width:1280px)_and_(min-height:800px)]:text-8xl"
 		>
-			Find hjem i din krop &mdash; igennem dansen
+			{heroTitle}
 		</h1>
 
 		<p

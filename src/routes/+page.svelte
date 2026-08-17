@@ -6,11 +6,14 @@
 	import Prices from '$lib/components/Prices.svelte';
 	import Testimonials from '$lib/components/Testimonials.svelte';
 	import Contact from '$lib/components/Contact.svelte';
+	import type { PageProps } from './$types';
+
+	let { data }: PageProps = $props();
 </script>
 
-<SeoHead />
+<SeoHead seo={data.page.properties} />
 
-<Hero />
+<Hero heroTitle={data.page.properties.heroTitle} />
 <About />
 <DanceTypes />
 <Prices />
