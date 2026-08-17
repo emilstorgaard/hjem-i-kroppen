@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { SITE_URL } from '$lib/site';
+
 	type Props = {
 		metaTitle?: string;
 		metaDescription?: string;
@@ -9,22 +11,21 @@
 	let {
 		metaTitle = 'Hjem i Kroppen – Danse- og Bevægelsesterapi',
 		metaDescription = 'Hjem i Kroppen – Danse- og bevægelsesterapi. Danserum, Kvinderum og Retreats, der hjælper dig hjem i din egen krop.',
-        ogImage = "https://hjemikroppen.dk/logo.jpg",
+		ogImage = `${SITE_URL}/logo.jpg`,
 		noindex = false
 	}: Props = $props();
-
 </script>
 
 <svelte:head>
 	<title>{metaTitle}</title>
 	<meta name="description" content={metaDescription} />
-	<link rel="canonical" href="https://hjemikroppen.dk/" />
-    {#if noindex}
+	<link rel="canonical" href={SITE_URL} />
+	{#if noindex}
 		<meta name="robots" content="noindex, nofollow" />
 	{/if}
 
-	<meta property="og:type" content="'website'" />
-	<meta property="og:url" content="https://hjemikroppen.dk/" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={SITE_URL} />
 	<meta property="og:title" content={metaTitle} />
 	<meta property="og:description" content={metaDescription} />
 	<meta property="og:image" content={ogImage} />
