@@ -4,7 +4,7 @@ import type { LayoutServerLoad } from './$types';
 
 export const load: LayoutServerLoad = async ({ fetch }) => {
 	const [errorPage] = await Promise.all([
-		getContentByPath('errorPage', fetch)
+		getContentByPath('fejlside', fetch)
 			.then((d) => d as ErrorPage)
 			.catch(() => null)
 	]);
