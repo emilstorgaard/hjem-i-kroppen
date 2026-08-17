@@ -3,6 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        PUBLIC_UMBRACO_URL: ${PUBLIC_UMBRACO_URL}
     container_name: hjem-i-kroppen-frontend
     restart: unless-stopped
     networks:

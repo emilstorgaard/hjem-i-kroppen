@@ -15,11 +15,13 @@ RUN npm run build
 # Production stage
 FROM node:lts-alpine
 
+ENV NODE_ENV=production
 WORKDIR /usr/src/app
 
 COPY --from=builder /usr/src/app/build build/
 COPY --from=builder /usr/src/app/package.json .
 COPY --from=builder /usr/src/app/package-lock.json .
+COPY --from=builder /usr/src/app/.npmrc .
 
 RUN npm ci --omit=dev && chown -R node:node /usr/src/app
 
