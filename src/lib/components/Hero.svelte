@@ -1,9 +1,9 @@
 <script lang="ts">
-	type Props = {
-		heroTitle: string;
-	};
+	import type { HeroProperties } from '$lib/types/hero';
 
-	let { heroTitle }: Props = $props();
+	let { hero }: { hero: HeroProperties } = $props();
+
+	const h = $derived(hero);
 </script>
 
 <section
@@ -42,7 +42,7 @@
 		<h1
 			class="mt-3 font-serif text-3xl leading-tight font-semibold text-sand-900 sm:mt-5 sm:text-4xl md:text-5xl lg:text-6xl [@media(min-width:1280px)_and_(min-height:800px)]:text-8xl"
 		>
-			{heroTitle}
+			{h.heroTitle}
 		</h1>
 
 		<p

@@ -1,4 +1,12 @@
 <script lang="ts">
+	import { mediaSrc, mediaSrcset } from '$lib/utils/media';
+	import type { Settings } from '$lib/types/settings';
+
+	let { settings }: { settings: Settings } = $props();
+
+	const s = $derived(settings.properties);
+	const logo = $derived(s.logo?.[0]);
+
 	let mobileMenuOpen = $state(false);
 	let topBarEl: HTMLDivElement | undefined = $state();
 
@@ -41,14 +49,21 @@
 			href="#top"
 			class="flex items-center gap-3 rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
 		>
-			<img
-				src="/logo.jpg"
-				alt="Hjem i Kroppen"
-				class="h-12 w-12 rounded-full object-cover shadow-sm"
-			/>
-			<span class="font-serif text-xl font-semibold tracking-wide text-sand-900"
-				>Hjem i Kroppen</span
-			>
+			{#if logo}
+				<img
+					src={mediaSrc(logo.url, 'headerLogo')}
+					srcset={mediaSrcset(logo.url, 'headerLogo')}
+					sizes="96px"
+					alt={logo.name}
+					fetchpriority="high"
+					loading="eager"
+					decoding="async"
+					width="96"
+					height="96"
+					class="h-12 w-12 rounded-full object-cover shadow-sm"
+				/>
+			{/if}
+			<span class="font-serif text-xl font-semibold tracking-wide text-sand-900">{s.siteName}</span>
 		</a>
 
 		<nav class="hidden items-center gap-9 lg:flex" aria-label="Hovedmenu">

@@ -2,6 +2,8 @@ import { getMediaUrl } from '$lib/api/umbraco';
 
 // Add more contexts (e.g. headerLogo/footerLogo) once those images move into Umbraco media.
 export const MEDIA_WIDTHS = {
+	headerLogo: [96, 192],
+	footerLogo: [64, 128],
 	og: [1200]
 } as const;
 

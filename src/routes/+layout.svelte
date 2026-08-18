@@ -2,33 +2,10 @@
 	import '$lib/styles/app.css';
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
-	import { contactInfo } from '$lib/content';
-	import { SITE_URL } from '$lib/site';
+	import type { LayoutProps } from './$types';
 
-	let { children } = $props();
-
-	const structuredData = {
-		'@context': 'https://schema.org',
-		'@type': ['LocalBusiness', 'HealthAndBeautyBusiness'],
-		name: contactInfo.name,
-		url: SITE_URL,
-		image: `${SITE_URL}/logo.jpg`,
-		telephone: contactInfo.phone,
-		email: contactInfo.email,
-		address: {
-			'@type': 'PostalAddress',
-			streetAddress: contactInfo.address
-		},
-		sameAs: [contactInfo.instagram, contactInfo.facebook]
-	};
-
-	const structuredDataJson = JSON.stringify(structuredData).replace(/</g, '\\u003c');
+	let { children, data }: LayoutProps = $props();
 </script>
-
-<svelte:head>
-	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-	{@html `<script type="application/ld+json">${structuredDataJson}</scr` + `ipt>`}
-</svelte:head>
 
 <div class="flex min-h-screen flex-col bg-sand-50 font-sans text-sand-900">
 	<a
@@ -37,9 +14,9 @@
 	>
 		Spring til indhold
 	</a>
-	<Header />
+	<Header settings={data.settings} />
 	<main id="main-content" class="flex-1">
 		{@render children()}
 	</main>
-	<Footer />
+	<Footer settings={data.settings} />
 </div>

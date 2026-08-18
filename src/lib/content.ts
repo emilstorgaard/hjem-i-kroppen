@@ -100,13 +100,3 @@ export const testimonials: Testimonial[] = [
 		rating: 5
 	}
 ];
-
-export const contactInfo = {
-	name: 'Hjem i Kroppen',
-	person: 'Mette',
-	phone: '+45 12 34 56 78',
-	email: 'kontakt@hjemikroppen.dk',
-	address: 'Danseadresse 1, 8000 Aarhus',
-	instagram: 'https://instagram.com',
-	facebook: 'https://facebook.com'
-};
