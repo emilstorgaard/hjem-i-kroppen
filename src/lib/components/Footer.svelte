@@ -1,20 +1,13 @@
 <script lang="ts">
 	import { mediaSrc, mediaSrcset } from '$lib/utils/media';
-	import type { Settings } from '$lib/types/settings';
+	import type { SettingsProperties } from '$lib/types/settings';
+	import { navLinks } from '$lib/navigation';
 
 	const year = new Date().getFullYear();
 
-	const links = [
-		{ href: '#om-mig', label: 'Om mig' },
-		{ href: '#tilbud', label: 'Tilbud' },
-		{ href: '#priser', label: 'Priser' },
-		{ href: '#anmeldelser', label: 'Anmeldelser' },
-		{ href: '#kontakt', label: 'Kontakt' }
-	];
+	let { settings }: { settings: SettingsProperties } = $props();
 
-	let { settings }: { settings: Settings } = $props();
-
-	const s = $derived(settings.properties);
+	const s = $derived(settings);
 	const logo = $derived(s.logo?.[0]);
 </script>
 
@@ -43,7 +36,7 @@
 		</a>
 
 		<nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2" aria-label="Footermenu">
-			{#each links as link (link.href)}
+			{#each navLinks as link}
 				<a
 					href={link.href}
 					class="rounded-sm text-sm text-sand-400 transition-colors hover:text-sand-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"

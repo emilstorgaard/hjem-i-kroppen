@@ -89,7 +89,7 @@
 
 {#snippet stars(rating: number)}
 	<div class="flex gap-1 text-sand-500" role="img" aria-label="{rating} ud af 5 stjerner">
-		{#each { length: 5 } as _, i (i)}
+		{#each { length: 5 } as _, i}
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 20 20"
@@ -199,7 +199,7 @@
 					</button>
 
 					<div class="flex items-center gap-2">
-						{#each { length: maxIndex + 1 } as _, i (i)}
+						{#each { length: maxIndex + 1 } as _, i}
 							<button
 								type="button"
 								onclick={() => goTo(i)}

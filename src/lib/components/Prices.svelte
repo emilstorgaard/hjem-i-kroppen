@@ -19,7 +19,7 @@
 		</div>
 
 		<div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-			{#each priceItems as item (item.title)}
+			{#each priceItems as item}
 				<div
 					class={[
 						'flex flex-col rounded-3xl p-8 ring-1',

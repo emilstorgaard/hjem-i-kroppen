@@ -56,12 +56,6 @@
 			class="mt-6 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:gap-4 md:mt-12 [@media(min-width:1280px)_and_(min-height:800px)]:gap-5"
 		>
 			<a
-				href="#kontakt"
-				class="rounded-full bg-sand-800 px-8 py-3 text-base font-medium text-sand-50 shadow-md transition-colors hover:bg-sand-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600 sm:py-3.5 [@media(min-width:1280px)_and_(min-height:800px)]:px-10 [@media(min-width:1280px)_and_(min-height:800px)]:py-4 [@media(min-width:1280px)_and_(min-height:800px)]:text-lg"
-			>
-				Book en tid
-			</a>
-			<a
 				href="#tilbud"
 				class="rounded-full border border-sand-400 px-8 py-3 text-base font-medium text-sand-800 transition-colors hover:bg-sand-200/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600 sm:py-3.5 [@media(min-width:1280px)_and_(min-height:800px)]:px-10 [@media(min-width:1280px)_and_(min-height:800px)]:py-4 [@media(min-width:1280px)_and_(min-height:800px)]:text-lg"
 			>

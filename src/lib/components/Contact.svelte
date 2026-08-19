@@ -12,7 +12,7 @@
 	);
 	const directionsHref = $derived(
 		address
-			? `https://www.google.com/maps/dir/?api=1&destination=${address.replace(/\s+/g, '+')}`
+			? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`
 			: undefined
 	);
 	const mapsEmbedSrc = $derived(

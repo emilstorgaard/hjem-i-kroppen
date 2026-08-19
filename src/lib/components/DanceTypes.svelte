@@ -75,7 +75,7 @@
 		</div>
 
 		<div class="mt-16 grid gap-8 md:grid-cols-3">
-			{#each danceTypes as type (type.title)}
+			{#each danceTypes as type}
 				<div
 					class="flex flex-col rounded-3xl bg-sand-50 p-8 shadow-sm ring-1 ring-sand-200 transition-shadow hover:shadow-lg"
 				>

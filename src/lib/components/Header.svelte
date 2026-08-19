@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { mediaSrc, mediaSrcset } from '$lib/utils/media';
-	import type { Settings } from '$lib/types/settings';
+	import type { SettingsProperties } from '$lib/types/settings';
+	import { navLinks } from '$lib/navigation';
 
-	let { settings }: { settings: Settings } = $props();
+	let { settings }: { settings: SettingsProperties } = $props();
 
-	const s = $derived(settings.properties);
+	const s = $derived(settings);
 	const logo = $derived(s.logo?.[0]);
 
 	let mobileMenuOpen = $state(false);
@@ -24,14 +25,6 @@
 		observer.observe(el);
 		return () => observer.disconnect();
 	});
-
-	const navLinks = [
-		{ href: '#om-mig', label: 'Om mig' },
-		{ href: '#tilbud', label: 'Tilbud' },
-		{ href: '#priser', label: 'Priser' },
-		{ href: '#anmeldelser', label: 'Anmeldelser' },
-		{ href: '#kontakt', label: 'Kontakt' }
-	];
 
 	function closeMenu() {
 		mobileMenuOpen = false;
@@ -67,7 +60,7 @@
 		</a>
 
 		<nav class="hidden items-center gap-9 lg:flex" aria-label="Hovedmenu">
-			{#each navLinks as link (link.href)}
+			{#each navLinks as link}
 				<a
 					href={link.href}
 					class="rounded-sm text-sm font-medium tracking-wide text-sand-700 transition-colors hover:text-sand-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
@@ -75,12 +68,6 @@
 					{link.label}
 				</a>
 			{/each}
-			<a
-				href="#kontakt"
-				class="rounded-full bg-sand-800 px-5 py-2.5 text-sm font-medium text-sand-50 shadow-sm transition-colors hover:bg-sand-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
-			>
-				Book en tid
-			</a>
 		</nav>
 
 		<button
@@ -129,7 +116,7 @@
 			class="flex flex-col gap-1 border-t border-sand-200/60 bg-sand-50 px-6 py-4 lg:hidden"
 			aria-label="Mobilmenu"
 		>
-			{#each navLinks as link (link.href)}
+			{#each navLinks as link}
 				<a
 					href={link.href}
 					onclick={closeMenu}
@@ -138,13 +125,6 @@
 					{link.label}
 				</a>
 			{/each}
-			<a
-				href="#kontakt"
-				onclick={closeMenu}
-				class="mt-2 rounded-full bg-sand-800 px-5 py-3 text-center text-base font-medium text-sand-50 transition-colors hover:bg-sand-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
-			>
-				Book en tid
-			</a>
 		</nav>
 	{/if}
 </header>
