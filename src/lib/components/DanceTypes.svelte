@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { danceTypes } from '$lib/content';
+	import { reveal } from '$lib/actions/reveal';
 </script>
 
 {#snippet icon(name: string)}
@@ -58,7 +59,7 @@
 
 <section id="tilbud" aria-labelledby="tilbud-heading" class="bg-sand-100 px-6 py-24 lg:px-8">
 	<div class="mx-auto max-w-6xl">
-		<div class="mx-auto max-w-3xl text-center">
+		<div class="mx-auto max-w-3xl text-center" use:reveal>
 			<p class="text-sm font-medium tracking-[0.3em] text-sand-600 uppercase">Mine tilbud</p>
 			<h2
 				class="mt-4 font-serif text-4xl font-semibold text-sand-900 sm:text-5xl"
@@ -75,9 +76,10 @@
 		</div>
 
 		<div class="mt-16 grid gap-8 md:grid-cols-3">
-			{#each danceTypes as type}
+			{#each danceTypes as type, i (type.title)}
 				<div
-					class="flex flex-col rounded-3xl bg-sand-50 p-8 shadow-sm ring-1 ring-sand-200 transition-shadow hover:shadow-lg"
+					use:reveal={{ delay: i * 120 }}
+					class="flex flex-col rounded-3xl bg-sand-50 p-8 shadow-sm ring-1 ring-sand-200 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-sand-900/10 hover:ring-sand-300"
 				>
 					<div
 						class="flex h-14 w-14 items-center justify-center rounded-2xl bg-sand-200/70 text-sand-800"
@@ -88,7 +90,7 @@
 					<p class="mt-3 flex-1 leading-relaxed text-sand-700">{type.description}</p>
 					<a
 						href="#kontakt"
-						class="mt-6 inline-flex items-center gap-1 rounded-sm text-sm font-medium text-sand-700 hover:text-sand-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
+						class="group mt-6 inline-flex items-center gap-1 rounded-sm text-sm font-medium text-sand-700 hover:text-sand-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
 					>
 						Læs mere / book
 						<svg
@@ -97,7 +99,7 @@
 							viewBox="0 0 24 24"
 							stroke-width="1.5"
 							stroke="currentColor"
-							class="h-4 w-4"
+							class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
 						>
 							<path
 								stroke-linecap="round"

@@ -36,10 +36,10 @@
 		</a>
 
 		<nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2" aria-label="Footermenu">
-			{#each navLinks as link}
+			{#each navLinks as link (link.href)}
 				<a
 					href={link.href}
-					class="rounded-sm text-sm text-sand-400 transition-colors hover:text-sand-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
+					class="relative rounded-sm text-sm text-sand-400 transition-colors after:absolute after:right-0 after:-bottom-1 after:left-0 after:h-px after:origin-center after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:text-sand-50 hover:after:scale-x-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
 				>
 					{link.label}
 				</a>

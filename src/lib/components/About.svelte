@@ -1,12 +1,16 @@
+<script lang="ts">
+	import { reveal } from '$lib/actions/reveal';
+</script>
+
 <section id="om-mig" aria-labelledby="om-mig-heading" class="bg-sand-50 px-6 py-24 lg:px-8">
 	<div class="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2">
-		<div class="relative mx-auto w-full max-w-md">
+		<div class="relative mx-auto w-full max-w-md" use:reveal>
 			<div
 				class="absolute -top-8 -left-8 h-64 w-64 rounded-full bg-sand-200/70 blur-2xl"
 				aria-hidden="true"
 			></div>
 			<div
-				class="relative aspect-square overflow-hidden rounded-[3rem] bg-sand-100 shadow-xl ring-1 ring-sand-200"
+				class="relative aspect-square overflow-hidden rounded-[3rem] bg-sand-100 shadow-2xl ring-1 shadow-sand-900/15 ring-sand-200"
 			>
 				<img
 					src="/logo.jpg"
@@ -20,7 +24,7 @@
 			></div>
 		</div>
 
-		<div>
+		<div use:reveal={{ delay: 150 }}>
 			<p class="text-sm font-medium tracking-[0.3em] text-sand-600 uppercase">Om mig</p>
 			<h2
 				class="mt-4 font-serif text-4xl font-semibold text-sand-900 sm:text-5xl"

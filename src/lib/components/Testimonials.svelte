@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { testimonials } from '$lib/content';
+	import { reveal } from '$lib/actions/reveal';
 
 	const N = testimonials.length;
 	const isCarousel = N > 3;
@@ -108,7 +109,9 @@
 {/snippet}
 
 {#snippet testimonialCard(testimonial: (typeof testimonials)[number])}
-	<figure class="flex h-full flex-col rounded-3xl bg-sand-50 p-8 shadow-sm ring-1 ring-sand-200">
+	<figure
+		class="flex h-full flex-col rounded-3xl bg-sand-50 p-8 shadow-sm ring-1 ring-sand-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-sand-900/10"
+	>
 		{@render stars(testimonial.rating)}
 		<blockquote class="mt-5 flex-1 text-lg leading-relaxed text-sand-800 italic">
 			&laquo;{testimonial.quote}&raquo;
@@ -125,7 +128,7 @@
 	class="bg-sand-100 px-6 py-24 lg:px-8"
 >
 	<div class="mx-auto max-w-6xl">
-		<div class="mx-auto max-w-3xl text-center">
+		<div class="mx-auto max-w-3xl text-center" use:reveal>
 			<p class="text-sm font-medium tracking-[0.3em] text-sand-600 uppercase">Anmeldelser</p>
 			<h2
 				class="mt-4 font-serif text-4xl font-semibold text-sand-900 sm:text-5xl"
@@ -235,8 +238,10 @@
 			</div>
 		{:else}
 			<div class="mt-16 grid gap-8 md:grid-cols-3">
-				{#each testimonials as testimonial (testimonial.name)}
-					{@render testimonialCard(testimonial)}
+				{#each testimonials as testimonial, i (testimonial.name)}
+					<div use:reveal={{ delay: i * 120 }}>
+						{@render testimonialCard(testimonial)}
+					</div>
 				{/each}
 			</div>
 		{/if}

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { ContactProperties } from '$lib/types/contact';
+	import { reveal } from '$lib/actions/reveal';
 
 	let { contact }: { contact: ContactProperties } = $props();
 
@@ -24,7 +25,7 @@
 
 <section id="kontakt" aria-labelledby="kontakt-heading" class="bg-sand-900 px-6 py-24 lg:px-8">
 	<div class="mx-auto max-w-6xl">
-		<div class="mx-auto max-w-2xl text-center">
+		<div class="mx-auto max-w-2xl text-center" use:reveal>
 			<p class="text-sm font-medium tracking-[0.3em] text-sand-400 uppercase">Kontakt</p>
 			<h2
 				class="mt-4 font-serif text-4xl font-semibold text-sand-50 sm:text-5xl"
@@ -42,7 +43,8 @@
 			{#if p.phone}
 				<a
 					href={phoneHref}
-					class="flex flex-col items-center gap-3 rounded-3xl bg-sand-800/60 p-8 text-center ring-1 ring-sand-700 transition-colors hover:bg-sand-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
+					use:reveal
+					class="hover:shadow-sand-950/30 flex flex-col items-center gap-3 rounded-3xl bg-sand-800/60 p-8 text-center ring-1 ring-sand-700 transition-all duration-300 hover:-translate-y-1 hover:bg-sand-800 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +67,8 @@
 
 			<a
 				href={emailHref}
-				class="flex flex-col items-center gap-3 rounded-3xl bg-sand-800/60 p-8 text-center ring-1 ring-sand-700 transition-colors hover:bg-sand-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
+				use:reveal={{ delay: 120 }}
+				class="hover:shadow-sand-950/30 flex flex-col items-center gap-3 rounded-3xl bg-sand-800/60 p-8 text-center ring-1 ring-sand-700 transition-all duration-300 hover:-translate-y-1 hover:bg-sand-800 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +93,8 @@
 					href={directionsHref}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex flex-col items-center gap-3 rounded-3xl bg-sand-800/60 p-8 text-center ring-1 ring-sand-700 transition-colors hover:bg-sand-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200 sm:col-span-2 lg:col-span-1"
+					use:reveal={{ delay: 240 }}
+					class="hover:shadow-sand-950/30 flex flex-col items-center gap-3 rounded-3xl bg-sand-800/60 p-8 text-center ring-1 ring-sand-700 transition-all duration-300 hover:-translate-y-1 hover:bg-sand-800 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200 sm:col-span-2 lg:col-span-1"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +127,7 @@
 					href={directionsHref}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="rounded-full bg-sand-800/60 px-5 py-2.5 text-sm font-medium text-sand-200 ring-1 ring-sand-700 transition-colors hover:bg-sand-800 hover:text-sand-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
+					class="rounded-full bg-sand-800/60 px-5 py-2.5 text-sm font-medium text-sand-200 ring-1 ring-sand-700 transition-all duration-300 hover:scale-[1.03] hover:bg-sand-800 hover:text-sand-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200 active:scale-95"
 				>
 					Få rutevejledning
 				</a>
@@ -147,7 +151,7 @@
 						href={p.instagramUrl}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="rounded-full text-sand-300 transition-colors hover:text-sand-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
+						class="rounded-full text-sand-300 transition-all duration-300 hover:scale-110 hover:text-sand-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
 						aria-label="Følg på Instagram"
 					>
 						<svg
@@ -169,7 +173,7 @@
 						href={p.facebookUrl}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="rounded-full text-sand-300 transition-colors hover:text-sand-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
+						class="rounded-full text-sand-300 transition-all duration-300 hover:scale-110 hover:text-sand-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-200"
 						aria-label="Følg på Facebook"
 					>
 						<svg

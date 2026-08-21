@@ -10,6 +10,10 @@
 
 	let mobileMenuOpen = $state(false);
 	let topBarEl: HTMLDivElement | undefined = $state();
+	let scrolled = $state(false);
+
+	// Solid background once scrolled past the hero (or while the mobile menu is open) - transparent over the hero video otherwise.
+	const solid = $derived(scrolled || mobileMenuOpen);
 
 	// Expose the header's height as a CSS var so sections below can clear it exactly (instead of a guessed padding value).
 	$effect(() => {
@@ -26,13 +30,24 @@
 		return () => observer.disconnect();
 	});
 
+	$effect(() => {
+		const onScroll = () => {
+			scrolled = window.scrollY > 8;
+		};
+		onScroll();
+		window.addEventListener('scroll', onScroll, { passive: true });
+		return () => window.removeEventListener('scroll', onScroll);
+	});
+
 	function closeMenu() {
 		mobileMenuOpen = false;
 	}
 </script>
 
 <header
-	class="fixed inset-x-0 top-0 z-50 border-b border-sand-200/60 bg-sand-50/80 backdrop-blur-md"
+	class="fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 {solid
+		? 'border-sand-200/60 bg-sand-50/80 shadow-sm shadow-sand-900/5 backdrop-blur-md'
+		: 'border-transparent bg-transparent'}"
 >
 	<div
 		bind:this={topBarEl}
@@ -56,14 +71,20 @@
 					class="h-12 w-12 rounded-full object-cover shadow-sm"
 				/>
 			{/if}
-			<span class="font-serif text-xl font-semibold tracking-wide text-sand-900">{s.siteName}</span>
+			<span
+				class="font-serif text-xl font-semibold tracking-wide transition-colors {solid
+					? 'text-sand-900'
+					: 'text-sand-50'}">{s.siteName}</span
+			>
 		</a>
 
 		<nav class="hidden items-center gap-9 lg:flex" aria-label="Hovedmenu">
-			{#each navLinks as link}
+			{#each navLinks as link (link.href)}
 				<a
 					href={link.href}
-					class="rounded-sm text-sm font-medium tracking-wide text-sand-700 transition-colors hover:text-sand-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600"
+					class="relative rounded-sm text-sm font-medium tracking-wide transition-colors after:absolute after:right-0 after:-bottom-1 after:left-0 after:h-px after:origin-center after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:scale-x-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600 {solid
+						? 'text-sand-700 hover:text-sand-900'
+						: 'text-sand-100 hover:text-sand-50'}"
 				>
 					{link.label}
 				</a>
@@ -72,7 +93,9 @@
 
 		<button
 			type="button"
-			class="flex h-10 w-10 items-center justify-center rounded-full text-sand-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600 lg:hidden"
+			class="flex h-10 w-10 items-center justify-center rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-600 lg:hidden {solid
+				? 'text-sand-800'
+				: 'text-sand-50'}"
 			aria-label={mobileMenuOpen ? 'Luk menu' : 'Åbn menu'}
 			aria-expanded={mobileMenuOpen}
 			aria-controls="mobile-menu"
@@ -116,7 +139,7 @@
 			class="flex flex-col gap-1 border-t border-sand-200/60 bg-sand-50 px-6 py-4 lg:hidden"
 			aria-label="Mobilmenu"
 		>
-			{#each navLinks as link}
+			{#each navLinks as link (link.href)}
 				<a
 					href={link.href}
 					onclick={closeMenu}
